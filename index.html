@@ -1,0 +1,349 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info Form</title>
+    <style>
+        body {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            background-color: #252121;
+            color: #f6f6f6;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .container-row {
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 10px; 
+            width: 300px; 
+            margin: 0 auto; 
+        }
+        
+
+        .container-row label {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .container-row input,
+        .container-row select {
+             width: 100%; 
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .container-row input,
+        select:focus {
+            border-color: #444;
+            box-shadow: 0 0 8px rgba(68, 68, 68, 0.6);
+            outline: none;
+        }
+
+        .first-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            border: 1px solid  rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            background-color: #6e6565;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+
+        .second-section {
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 5 auto;
+            padding: 10px;
+            background-color: #6e6565;
+            border-radius: 10px;
+        }
+
+        .second-section .checkbox-group {
+            display: flex;
+            justify-content: space-around;
+            width: 70%;
+            margin: 10px;
+        }
+
+        .second-section .radio-group {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin: 10px;
+        }
+
+        .second-section .radio-group label {
+            margin: 4px;
+        }
+
+        .third-section {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin: 5 auto;
+            padding: 10px;
+            background-color:#6e6565;
+            border-radius: 10px;
+        }
+
+        .fourth-section ,.fifth-section ,.sixth-section{
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 20 auto;
+            padding: 10px;
+            background-color:#6e6565;
+            border-radius: 10px;
+            line-height: 1.6;
+
+        }
+
+        
+    </style>
+    <script>
+        function validateForm(event) {
+            const name = document.getElementById('name');
+            const middleInitial = document.getElementById('middle-initial');
+            const lastName = document.getElementById('last-name');
+            const matriculation = document.getElementById('matriculation');
+            const email = document.getElementById('email');
+            const feedback = document.getElementById('feedback');
+
+            const nameRegex = /^[a-zA-Z]+$/;
+            const matriculationRegex = /^[0-9]+$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!nameRegex.test(name.value)) {
+                alert('Name must only contain alphabetic characters.');
+                event.preventDefault();
+                return false;
+            }
+
+            if (!nameRegex.test(middleInitial.value)) {
+                alert('Middle Initial must only contain alphabetic characters.');
+                event.preventDefault();
+                return false;
+            }
+
+            if (!nameRegex.test(lastName.value)) {
+                alert('Last Name must only contain alphabetic characters.');
+                event.preventDefault();
+                return false;
+            }
+
+            if (!matriculationRegex.test(matriculation.value)) {
+                alert('Matriculation must only contain digits.');
+                event.preventDefault();
+                return false;
+            }
+
+            if (!emailRegex.test(email.value)) {
+                alert('Please enter a valid email address.');
+                event.preventDefault();
+                return false;
+            }
+
+            if (feedback.value.trim() === '') {
+                alert('Feedback cannot be empty.');
+                event.preventDefault();
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; color:peachpuff;">Welcome to My Homepage</h1>
+
+        <form onsubmit="validateForm(event)">
+            <h2 style="margin-left: 75px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font: size 200px; color: peachpuff;">Personal Info</h2>
+            <div class="first-section">
+                <section class="container-row">
+                    <span>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="First Name" pattern="[a-zA-Z]*"
+                            title="Only alphabetic characters are allowed.">
+                    </span>
+                    <span>
+                        <label for="middle-initial">M. Initial:</label>
+                        <input type="text" id="middle-initial" name="middle-initial" placeholder="Middle Initial"
+                            pattern="[a-zA-Z]*" title="Only alphabetic characters are allowed.">
+                    </span>
+                    <span>
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" pattern="[a-zA-Z]*"
+                            title="Only alphabetic characters are allowed.">
+                    </span>
+
+                    <span>
+                        <label for="country" value="India">I am from :</label>
+                        <select id="country" name="country">
+                            <option value="">Select Country</option>
+                            <option value="india" selected>India</option>
+                            <option value="usa">USA</option>
+                            <option value="germany">Germany</option>
+                        </select>
+                    </span>
+
+                </section>
+
+                <section class="container-row">
+                    <span>
+                        <label for="matriculation">Matriculation:</label>
+                        <input type="text" id="matriculation" name="matriculation" maxlength="9" placeholder="Enter only 9 digits" required>
+                    </span>
+
+                    <span>
+                        <label for="semester">Semester:</label>
+                        <select id="semester" name="semester">
+                            <option value="">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </span>
+
+                    <span>
+                        <label for="program">Program:</label>
+                        <select id="program" name="program">
+                            <option value="">Select</option>
+                            <option value="pharmaceutics">Pharmaceutics</option>
+                            <option value="biotechnology">Biotechnology</option>
+                            <option value="data-science">Data Science</option>
+                        </select>
+                    </span>
+
+                    <span>
+                        <label for="start-date">Started in:</label>
+                        <input type="date" id="start-date" name="start-date" value="2024-10-27">
+
+                    </span>
+
+                </section>
+            </div>
+
+            <div class="second-section">
+                <label>I've heard this graduate program from:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="source" value="media"> Media</label>
+                    <label><input type="checkbox" name="source" value="ad"> Ad</label>
+                    <label><input type="checkbox" name="source" value="agency"> Agency</label>
+                    <label><input type="checkbox" name="source" value="other"> Other</label>
+                </div>
+                <label>When I finish my study, I will:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="future-plan" value="return"> Return to my country</label>
+                    <label><input type="radio" name="future-plan" value="job"> Find a job in Europe</label>
+                    <label><input type="radio" name="future-plan" value="training"> Do practical training and
+                        decide</label>
+                </div>
+            </div>
+            <div class="third-section">
+                <label for="feedback">Feedback for the course:</label>
+                <p>This course has been an amazing learning experience. The content was well-organized, and each topic was explained clearly and at the right pace. What stood out the most was how practical and relevant the material was—it felt like everything we learned had a direct application.
+
+                    The teaching style was engaging and supportive, making it easy to stay motivated and focused. I also appreciated the opportunities to ask questions and get personalized guidance, which really made a difference. This course has not only deepened my understanding but also boosted my confidence. Thank you for creating such a valuable learning journey!</p>           
+                </div>
+            
+            <div class="fourth-section">
+                <h2 style="text-align: center;color: peachpuff;">SDLC Methodologies</h2>
+                <p><b>I will write a paragraph for each methodology of <a href="https://www.geeksforgeeks.org/top-5-sdlcsoftware-developement-life-cycle-methodologies/" style="color: skyblue;">SDLC</a>. These are many of them but I will suggest a few.</b></p>
+                <p>My suggestion and reasons are as follows : </p>
+                <ol type="a">
+                    <li><h4>Waterfall Model</h4> 
+                        The Waterfall Model is a traditional and straightforward approach to software development that progresses sequentially through distinct phases, including requirement gathering, system design, implementation, testing, deployment, and maintenance. Each phase must be completed before moving to the next, making it a rigid model with little room for modification once a phase is finalized. It is especially effective for projects with stable, well-defined requirements and where changes during development are unlikely. The model's structured approach ensures clear documentation and well-defined deliverables at each stage, which can be helpful in maintaining quality standards.
+                        
+                        However, the Waterfall Model has limitations when dealing with complex or dynamic projects. It lacks flexibility, as changes in later stages often require revisiting and redoing previous phases, which can be costly and time-consuming. Despite this, the model is well-suited for projects like building systems where requirements are well-understood, such as government or infrastructure projects. Its systematic process makes it easier for teams to manage progress and timelines.
+                        
+                        </li>
+                    <li><h4>Agile Model</h4>
+                        The Agile Model is a modern and flexible approach to software development that prioritizes adaptability, customer collaboration, and iterative progress. Development is broken into smaller increments called "sprints," typically lasting 1-4 weeks, during which specific features or functionalities are developed and delivered. Feedback from stakeholders is collected at the end of each sprint, enabling continuous improvement and allowing teams to adjust based on evolving requirements. Agile is particularly effective for projects in dynamic environments where priorities shift frequently, such as mobile app development or e-commerce platforms.
+                        
+                        The Agile approach promotes collaboration between cross-functional teams and stakeholders, fostering innovation and quick problem-solving. This model focuses on delivering functional software early and frequently, ensuring the client can see tangible progress throughout the project lifecycle. However, Agile requires strong communication, skilled team members, and a well-defined framework to ensure all sprints align with the project's goals. While it provides flexibility, it may struggle with large-scale projects where a comprehensive plan is required upfront.</li>
+                    <li><h4>V-Model (Verification and Validation)</h4>
+                        The V-Model, also known as the Verification and Validation Model, is an extension of the Waterfall Model where testing activities are planned alongside development phases. For each development phase, there is a corresponding testing phase, ensuring errors are identified and resolved early. For example, requirements are verified through acceptance testing, and the design is validated through integration and system testing. This parallel testing process reduces the chances of errors reaching the final stages of development and ensures high-quality deliverables.
+                        
+                        The V-Model is particularly effective for projects requiring high standards of quality, such as medical or aerospace systems, where any defects could have severe consequences. However, like the Waterfall Model, it is less flexible and assumes that requirements are well-defined at the start of the project. It may not be ideal for projects where requirements evolve during development, but it is highly reliable for projects that cannot afford errors in critical systems.</li>
+                        <li><h4>Iterative Model</h4>
+                            
+                        The Iterative Model develops software in incremental cycles, with each iteration building upon the previous one. At the end of each cycle, a working version of the product is delivered, allowing for continuous feedback and refinements. This approach is highly flexible, enabling developers to incorporate changes and improvements based on feedback from stakeholders or market conditions. It is suitable for projects where requirements are not entirely clear at the beginning, such as developing innovative or experimental products.
+
+                        This model allows teams to manage risks effectively by addressing high-priority features early in the process and refining the product progressively. It also provides the client with a tangible product early in the development cycle, improving satisfaction and confidence. However, the Iterative Model requires close collaboration between stakeholders and developers and may demand more time and resources compared to linear models like Waterfall. It is particularly advantageous for projects like web applications or software-as-a-service platforms where user feedback is critical to success.</li>
+                </ol>
+                <p><b>Among so many SDLC methodologies the ones that are in the AGILE Classification are better.Among AGILE SDLC Methods, I have also a few suggestions.</b></p>
+                <ol type="a">
+                    <li><h4>Extreme Programming (XP)</h4>
+                        This is like coding in high gear but with extra precautions. It emphasizes writing code together (pair programming) and testing constantly (test-driven development). The goal is to quickly deliver high-quality software while collaborating closely with customers.
+                    </li>
+                    <li><h4> Scrum</h4>
+                        Scrum is a highly popular Agile methodology that focuses on delivering value through iterative and incremental processes. It breaks the project into short, time-boxed intervals called Sprints, which last 2–4 weeks. Scrum encourages collaboration through daily stand-up meetings where team members discuss progress, roadblocks, and goals. It uses key tools like product backlogs and sprint reviews to ensure alignment and transparency. This approach is suitable for dynamic environments that often require frequent deliverables and rapid adaptation to change in requirements.
+                    </li>
+                    <li><h4>Kanban</h4>
+                        Kanban is a visual framework for managing workflows and optimizing processes in a continuous delivery model. It uses a Kanban board with columns representing different stages of work, allowing teams to visualize and track progress in real time. One of its key principles is limiting work in progress (WIP) to avoid bottlenecks and ensure focus. Kanban is very flexible, and it can be easily used by teams that want to respond to changes without the rigidness of iterations. It's very suitable for teams that are interested in efficiency improvement and smooth workflow.
+                    </li>
+                </ol>
+                <p><b>In this Software development and applications course of <a href="https://www.srh-university.de/en/master/computer-science-big-data-artificial-intelligence/i/" style="color: skyblue;">SRH</a> we learnt the following </b> </p>
+                <ol type="a">
+                    <li>SDLC</li>
+                    <li>C Programming Language</li>
+                    <li>FrontEnd</li>
+                    <li>Linear DSA</li>
+                </ol>
+            </div>
+            <div class="fifth-section">
+                <h2 style="text-align: center;color: peachpuff;">CSS and JavaScript</h2>
+                  
+                <p><b>I have used Inline and Internal CSS in this webpage and there are 3 ways to include 
+                    <a href="https://www.w3schools.com/css/css_intro.asp" style="color: skyblue;" >CSS:</a></b></p>
+                <ul>
+                <li>Inline CSS: Write CSS directly in the HTML element using the <code>style</code> attribute.<br>
+                    Example: <code>&lt;h1 style=&quot;color: blue;&quot;&gt;Welcome to SRH&lt;/h1&gt;</code></li>
+                <li>Internal CSS:  Include CSS in a <code>&lt;style&gt;</code> tag inside the HTML <code>&lt;head&gt;</code>.<br>
+                    Example: <code>&lt;style&gt; h1 { color: red; } &lt;/style&gt;</code></li>
+                <li>External CSS: Link an external stylesheet using the <code>&lt;link&gt;</code> tag.<br>
+                    Example: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</code></li>
+                </ul>
+                <p><b>The reasons CSS used in a webpage are </b></p>
+                <ol type="1">
+                    <li>CSS styles elements like colors, fonts, layouts, and animations to improve the overall look of a webpage. </li>
+                    <li>It separates the design from HTML, making the structure cleaner and easier to manage.</li>
+                    <li>External CSS files reduce code duplication and allow browsers to cache styles, speeding up page loading.</li>
+                </ol>
+                <p><b>We also use <a href="https://www.w3schools.com/js/js_intro.asp" style="color: skyblue;">JavaScript</a> in webpage development. The main reasons are as follows</b></p>
+                <ol type="a">
+                    <li> JavaScript enables dynamic features like sliders, dropdown menus, and interactive forms, enhancing user engagement. </li>
+                    <li> It allows for real-time updates, such as content changes without refreshing the page, using technologies like AJAX.</li>
+                    <li> Popular frameworks like React, Angular, and Vue rely on JavaScript for building scalable and efficient web applications.</li>
+                </ol>
+            </div>
+                <div class="sixth-section">
+                <p>I've done this project myself and accept the consequences if found other ways.</p>
+                <p>You can reach me at : <input type="text" value="praveensombhathina@gmail.com" readonly style="width: 215px;"></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
